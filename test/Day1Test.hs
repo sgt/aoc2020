@@ -5,10 +5,13 @@ import Protolude
 import Test.Tasty (TestTree, testGroup)
 import Test.Tasty.HUnit (testCase, (@?=))
 
+testData::[Int]
+testData = [1721, 979, 366, 299, 675, 1456]
+
 tests :: TestTree
 tests =
   testGroup
     "Day 1 tests"
-    [ testCase "solve a" $ solveAInts [1721, 979, 366, 299, 675, 1456] @?= Just 514579,
-      testCase "solve b" $ solveBInts [1721, 979, 366, 299, 675, 1456] @?= Just 241861950
+    [ testCase "solve a" $ solveAInts testData @?= Just 514579,
+      testCase "solve b" $ solveBInts testData @?= Just 241861950
     ]

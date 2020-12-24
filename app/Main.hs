@@ -4,14 +4,17 @@ module Main where
 
 import qualified Data.Map as M
 import qualified Data.Text as T
-import Day1
+import qualified Day1
+import qualified Day2
 import Protolude
 
 solvers :: Map (Text, Text) (Text -> Text)
 solvers =
   M.fromList
     [ (("1", "A"), Day1.solveA),
-      (("1", "B"), Day1.solveB)
+      (("1", "B"), Day1.solveB),
+      (("2", "A"), Day2.solveA),
+      (("2", "B"), Day2.solveB)
     ]
 
 getFilename :: Text -> FilePath

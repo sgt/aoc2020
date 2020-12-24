@@ -1,0 +1,82 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 826b58b2e0c2a90f90633276e4da311ba03bbdae5c3dfffe2b8d03fa99af6a14
+
+name:           aoc2020
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/sgt/aoc2020#readme>
+homepage:       https://github.com/sgt/aoc2020#readme
+bug-reports:    https://github.com/sgt/aoc2020/issues
+author:         Sergei Barbarash
+maintainer:     sgt.sgt@gmail.com
+copyright:      2020 Sergei Barbarash
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/sgt/aoc2020
+
+library
+  exposed-modules:
+      Day1
+      Util
+  other-modules:
+      Paths_aoc2020
+  hs-source-dirs:
+      src
+  default-extensions: NoImplicitPrelude
+  ghc-options: -Wall -haddock
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , megaparsec
+    , protolude
+    , text
+  default-language: Haskell2010
+
+executable aoc2020-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_aoc2020
+  hs-source-dirs:
+      app
+  default-extensions: NoImplicitPrelude
+  ghc-options: -Wall -haddock -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aoc2020
+    , base >=4.7 && <5
+    , containers
+    , megaparsec
+    , protolude
+    , text
+  default-language: Haskell2010
+
+test-suite aoc2020-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Day1Test
+      Paths_aoc2020
+  hs-source-dirs:
+      test
+  default-extensions: NoImplicitPrelude
+  ghc-options: -Wall -haddock -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aoc2020
+    , base >=4.7 && <5
+    , containers
+    , megaparsec
+    , protolude
+    , tasty
+    , tasty-hunit
+    , text
+  default-language: Haskell2010

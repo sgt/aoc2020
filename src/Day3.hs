@@ -36,7 +36,7 @@ coordsList grid (Move right down) = takeWhile (\(Coords _ y) -> y < length grid)
     addCoords (Coords x y) = Coords (x + right) (y + down)
 
 solveSingle :: Grid -> Move -> Int
-solveSingle grid move = length . filter (== True) $ hasTree grid <$> coords
+solveSingle grid move = length $ filter (hasTree grid) coords
   where
     coords = coordsList grid move
 

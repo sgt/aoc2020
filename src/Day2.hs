@@ -28,9 +28,9 @@ parseLine x = do
   pure (password, Constraints ch minE maxE)
 
 solve :: (Text -> Constraints -> Bool) -> Text -> Text
-solve validatorFn input = show . length . filter (== True) $ uncurry validatorFn <$> params
+solve validatorFn input = show . length $ filter (uncurry validatorFn) params
   where
-    params = catMaybes $ parseLine <$> lines input
+    params = mapMaybe parseLine (lines input)
 
 solveA :: Text -> Text
 solveA = solve isValidA

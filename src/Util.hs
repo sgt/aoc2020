@@ -15,3 +15,8 @@ isHex = T.all isHexDigit
 
 isDecimal :: Text -> Bool
 isDecimal = T.all isDigit
+
+splitTwoOn :: Text -> Text -> Maybe (Text, Text)
+splitTwoOn spl x = case T.splitOn spl x of
+  [a, b] -> Just (a, b)
+  _ -> Nothing

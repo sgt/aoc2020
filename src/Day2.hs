@@ -4,6 +4,7 @@ module Day2 where
 
 import qualified Data.Text as T
 import Protolude
+import Util (splitTwoOn)
 
 data Constraints = Constraints Char Int Int
 
@@ -11,11 +12,6 @@ isValidA :: Text -> Constraints -> Bool
 isValidA password (Constraints ch minE maxE) = entries >= minE && entries <= maxE
   where
     entries = length $ filter (== ch) (toS password)
-
-splitTwoOn :: Text -> Text -> Maybe (Text, Text)
-splitTwoOn spl x = case T.splitOn spl x of
-  [a, b] -> Just (a, b)
-  _ -> Nothing
 
 parseLine :: Text -> Maybe (Text, Constraints)
 parseLine x = do

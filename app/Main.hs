@@ -16,7 +16,8 @@ solvers =
       (("1", "B"), Day1.solveB),
       (("2", "A"), Day2.solveA),
       (("2", "B"), Day2.solveB),
-      (("3", "A"), Day3.solveA)
+      (("3", "A"), Day3.solveA),
+      (("3", "B"), Day3.solveB)
     ]
 
 getFilename :: Text -> FilePath

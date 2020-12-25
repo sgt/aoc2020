@@ -27,5 +27,6 @@ tests :: TestTree
 tests =
   testGroup
     "Day 3 tests"
-    [ testCase "solve a" $ solveA testData @?= "7"
+    [ testCase "solve a" $ solveA testData @?= "7",
+      testCase "solve a" $ solveB testData @?= "336"
     ]

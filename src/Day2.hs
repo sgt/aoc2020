@@ -17,7 +17,7 @@ splitTwoOn spl x = case T.splitOn spl x of
   [a, b] -> Just (a, b)
   _ -> Nothing
 
-parseLine :: Text -> Maybe (Constraints, Text)
+parseLine :: Text -> Maybe (Text, Constraints)
 parseLine x = do
   (constraintDef, password) <- splitTwoOn ": " x
   (minMax, chT) <- splitTwoOn " " constraintDef
@@ -25,10 +25,10 @@ parseLine x = do
   ch <- if T.length chT == 1 then Just (T.head chT) else Nothing
   minE <- readMaybe $ toS minET
   maxE <- readMaybe $ toS maxET
-  pure (Constraints ch minE maxE, password)
+  pure (password, Constraints ch minE maxE)
 
 solve :: (Text -> Constraints -> Bool) -> Text -> Text
-solve validatorFn input = show $ length $ filter (== True) $ fmap (\(cs, t) -> validatorFn t cs) params
+solve validatorFn input = show . length . filter (== True) $ uncurry validatorFn <$> params
   where
     params = catMaybes $ parseLine <$> lines input
 

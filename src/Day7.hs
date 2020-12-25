@@ -39,9 +39,7 @@ canItHold holdeeName db holderName = case M.lookup holderName db of
      in holdeeName `elem` subNames || any (canItHold holdeeName db) subNames
 
 mkDb :: Text -> Db
-mkDb = M.fromList . fmap bagToKV . mapMaybe parseLine . lines
-  where
-    bagToKV bag@(Bag name _) = (name, bag)
+mkDb = M.fromList . fmap (\bag -> (bagName bag, bag)) . mapMaybe parseLine . lines
 
 solveA :: Text -> Text
 solveA input = (show . length . filter (canItHold "shiny gold" db)) allNames
@@ -56,6 +54,4 @@ bagCapacity :: Db -> Name -> Int
 bagCapacity db name = maybe 0 (canHoldCapacity db . bagCanHold) (M.lookup name db)
 
 solveB :: Text -> Text
-solveB input = show $ bagCapacity db "shiny gold"
-  where
-    db = mkDb input
+solveB input = show $ bagCapacity (mkDb input) "shiny gold"

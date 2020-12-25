@@ -67,8 +67,7 @@ isValidField (Field "hgt" v) = (m == "cm" && i >= 150 && i <= 193) || (m == "in"
     i = parseInt 0 (T.dropEnd 2 v)
 isValidField (Field "hcl" v) = prefix == "#" && isHex postfix
   where
-    prefix = T.take 1 v
-    postfix = T.drop 1 v
+    (prefix, postfix) = T.splitAt 1 v
 isValidField (Field "ecl" v) = v `elem` validEyeColors
 isValidField (Field "pid" v) = T.length v == 9 && isDecimal v
 isValidField _ = True

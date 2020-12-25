@@ -8,6 +8,7 @@ import qualified Day1
 import qualified Day2
 import qualified Day3
 import qualified Day4
+import qualified Day5
 import Protolude
 
 solvers :: Map (Text, Text) (Text -> Text)
@@ -20,7 +21,9 @@ solvers =
       (("3", "A"), Day3.solveA),
       (("3", "B"), Day3.solveB),
       (("4", "A"), Day4.solveA),
-      (("4", "B"), Day4.solveB)
+      (("4", "B"), Day4.solveB),
+      (("5", "A"), Day5.solveA),
+      (("5", "B"), Day5.solveB)
     ]
 
 getFilename :: Text -> FilePath

@@ -66,5 +66,5 @@ tests =
     "Day 4 tests"
     [ testCase "solve a" $ solveA testData @?= "2",
       testCase "solve b valid" $ solveB testDataValid @?= "4",
-      testCase "solve b valid" $ solveB testDataInvalid @?= "0"
+      testCase "solve b invalid" $ solveB testDataInvalid @?= "0"
     ]

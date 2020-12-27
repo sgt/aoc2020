@@ -7,6 +7,7 @@ import qualified Day4Test
 import qualified Day5Test
 -- day 6 is too trivial for testing
 import qualified Day7Test
+import qualified Day8Test
 import Protolude
 import Test.Tasty (TestTree, defaultMain, testGroup)
 
@@ -22,5 +23,6 @@ tests =
       Day3Test.tests,
       Day4Test.tests,
       Day5Test.tests,
-      Day7Test.tests
+      Day7Test.tests,
+      Day8Test.tests
     ]

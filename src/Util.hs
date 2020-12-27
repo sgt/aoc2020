@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Util where
 
 import Data.Char (isDigit, isHexDigit)
@@ -9,6 +11,15 @@ readInts content = mapMaybe (readMaybe . toS) (lines content)
 
 parseInt :: Int -> Text -> Int
 parseInt def x = fromMaybe def $ (readMaybe . toS) x
+
+parseSignedInt :: Text -> Maybe Int
+parseSignedInt x = case sign of
+  "+" -> i
+  "-" -> negate <$> i
+  _ -> Nothing
+  where
+    (sign, iT) = T.splitAt 1 x
+    i = readMaybe $ toS iT
 
 isHex :: Text -> Bool
 isHex = T.all isHexDigit

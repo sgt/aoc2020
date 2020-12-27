@@ -26,5 +26,5 @@ tests =
   testGroup
     "Day 8 tests"
     [ testCase "solve a" $ solveA testData @?= "InfiniteLoop 5",
-      testCase "solve b" $ solveB testData @?= "not implemented"
+      testCase "solve b" $ solveB testData @?= "NormalTermination 8"
     ]

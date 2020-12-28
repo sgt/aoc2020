@@ -2,15 +2,27 @@
 
 module Day1 where
 
-import qualified Data.Set as S
+import qualified Data.Map as M
 import Protolude
 import Util (readInts)
 
-findComplementary :: Int -> [Int] -> Maybe (Int, Int)
-findComplementary total xs = (\x -> (x, total - x)) <$> found
+mkCountMap :: [Int] -> Map Int Int
+mkCountMap = M.fromList . mapMaybe f . group . sort
   where
-    idx = S.fromList xs
-    found = find (\x -> (total - x) `S.member` idx) xs
+    f [] = Nothing
+    f xs@(x : _) = Just (x, length xs)
+
+findComplementary :: Int -> [Int] -> Maybe (Int, Int)
+findComplementary total xs = (\x -> (x, total - x)) <$> find isComplementary xs
+  where
+    idx = mkCountMap xs
+    isComplementary x
+      | isNothing cnt = False
+      | cx == x && fromMaybe 0 cnt < 2 = False
+      | otherwise = True
+      where
+        cx = total - x
+        cnt = cx `M.lookup` idx
 
 solveAInts :: [Int] -> Maybe Int
 solveAInts intList = do

@@ -5,6 +5,7 @@ module Main where
 import qualified Data.Map as M
 import qualified Data.Text as T
 import qualified Day1
+import qualified Day10
 import qualified Day2
 import qualified Day3
 import qualified Day4
@@ -35,7 +36,8 @@ solvers =
       (("8", "A"), Day8.solveA),
       (("8", "B"), Day8.solveB),
       (("9", "A"), Day9.solveA),
-      (("9", "B"), Day9.solveB)
+      (("9", "B"), Day9.solveB),
+      (("10", "A"), Day10.solveA)
     ]
 
 getFilename :: Text -> FilePath

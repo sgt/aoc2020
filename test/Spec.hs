@@ -1,11 +1,13 @@
 module Main where
 
+-- day 6 is too trivial for testing
+
+import qualified Day10Test
 import qualified Day1Test
 import qualified Day2Test
 import qualified Day3Test
 import qualified Day4Test
 import qualified Day5Test
--- day 6 is too trivial for testing
 import qualified Day7Test
 import qualified Day8Test
 import qualified Day9Test
@@ -26,5 +28,6 @@ tests =
       Day5Test.tests,
       Day7Test.tests,
       Day8Test.tests,
-      Day9Test.tests
+      Day9Test.tests,
+      Day10Test.tests
     ]

@@ -12,7 +12,7 @@ xmasList preludeLength xs
   | otherwise = (prelude, i) : xmasList preludeLength remainder
   where
     (prelude, xs') = splitAt preludeLength xs
-    (i, remainder) = (headDef (-1) xs', tailDef [] xs)
+    (i, remainder) = (headDef (-1) xs', tailSafe xs)
 
 firstWeakNumber :: Int -> [Int] -> Maybe Int
 firstWeakNumber preludeLength xs = snd <$> find isWeak (xmasList preludeLength xs)
